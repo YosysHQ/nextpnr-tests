@@ -9,8 +9,8 @@ SH_OUTPUT := $(patsubst %.sh,%.log,$(SH))
 
 all: $(JSON_OUTPUT) $(SH_OUTPUT)
 
-$(JSON_OUTPUT): %.log: %.json $(wildcard %.pcf) $(wildcard %.npnr) | $(NPNR)
+$(JSON_OUTPUT): %.log: %.json $(wildcard %.pcf) $(wildcard %.npnr) $(NPNR)
 	$(NPNR) --json $(word 1,$^) $(if $(wildcard $*.pcf),--pcf $*.pcf,) $(if $(wildcard $*.npnr),$(shell cat $*.npnr),) > $@ 2>&1
 
-$(SH_OUTPUT): %.log: %.sh | $(NPNR)
+$(SH_OUTPUT): %.log: %.sh $(NPNR)
 	cd $(dir $@) && NPNR=$(NPNR) bash $(notdir $(word 1,$^)) > /dev/null 2>&1
