@@ -1,0 +1,2 @@
+read_verilog -DCONST_INOUT top.v
+synth_ice40 -json test1.json

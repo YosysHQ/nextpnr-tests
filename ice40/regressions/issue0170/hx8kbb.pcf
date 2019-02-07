@@ -1,0 +1,15 @@
+set_io BCLK G1 # only gbin pin on connector J4, expects 80MHz, others change on negative edge.
+set_io LRCLK J1 # expects 2.5MHz, low signifies new frame, msb of first channel; high is second channel
+# LRCLK should idle high
+set_io SDIN M1
+# above should use closely-mounted, terminated LVDS receiver modules.
+# 80MHz single-ended is a Bad Idea over wires between boards.
+
+# SPI Master output
+# on connector J3
+set_io SCLKp R3
+set_io SCLKn T5
+set_io DOp T7
+set_io DOn T9
+set_io CSp T10
+set_io CSn T11

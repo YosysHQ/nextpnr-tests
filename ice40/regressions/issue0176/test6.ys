@@ -1,0 +1,2 @@
+read_verilog -DDYN_ASSIGN top.v
+synth_ice40 -json test6.json

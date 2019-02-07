@@ -1,0 +1,4 @@
+set_io clk12m_in 35
+
+set_io out1 3
+set_io out2 4

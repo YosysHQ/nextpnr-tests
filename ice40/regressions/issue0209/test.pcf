@@ -1,0 +1,2 @@
+set_io --warn-no-port PIN_5 C1
+set_io --warn-no-port PIN_18 A9

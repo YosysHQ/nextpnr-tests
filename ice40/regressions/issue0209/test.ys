@@ -1,0 +1,2 @@
+read_verilog test.v
+synth_ice40 -json test.json

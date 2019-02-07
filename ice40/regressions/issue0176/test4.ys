@@ -1,0 +1,2 @@
+read_verilog -DDYN_INOUT top.v
+synth_ice40 -json test4.json

@@ -1,0 +1,63 @@
+
+
+set_io D[0] C3
+set_io D[1] B3
+set_io D[2] C4
+set_io D[3] C5
+set_io D[4] A1
+set_io D[5] A2
+set_io D[6] B4
+set_io D[7] B5
+set_io D[8] A5
+set_io D[9] A6
+set_io D[10] C6
+set_io D[11] B6
+set_io D[12] B7
+set_io D[13] C7
+set_io D[14] A7
+set_io D[15] B8
+
+
+set_io TXD B12
+set_io RXD B10
+set_io pclk J3
+set_io reset A16
+set_io PIOS_00 R11
+set_io PIOS_01 P11
+set_io PIOS_02 P12
+set_io PIOS_03 R12
+
+set_io MISO N12 # in maxrefdes#24 J1 Pin 3
+set_io SCL P10 # out maxrefdes#24 J1 Pin 4
+set_io MOSI N10 # out maxrefdes#24 J1 Pin 2
+# note 3.3V and Gnd connected to maxrefdes#24 J1 pins 6 and 5 respectively also
+
+set_io PA[0] R16 # in ERR maxrefdes#24 J1 Pin 7
+set_io PA[1] T16 # out nCS1 maxrefdes#24 J1 Pin 1
+set_io PA[2] T15 # out nCS2 maxrefdes#24 J1 Pin 8
+set_io PA[3] T14 # out purge mosfet (on is purge-disabled)
+set_io PA[4] T13 # out valve enable control (via optoisolator) 
+set_io PA[5] P13 # in valve ok (via optoisolator, low is ok, hi is fault)
+set_io PA[6] M11
+set_io PA[7] T11
+
+set_io PA[8]  R10
+set_io PA[9]  T10
+set_io PA[10] P9
+set_io PA[11] P8
+set_io PA[12] R9
+set_io PA[13] T9
+set_io PA[14] T8
+set_io PA[15] T7 # out nCS for CAN bus module
+
+set_io MISO2  T1 # in CAN bus module 
+set_io SCL2  R2 # out CAN bus module 
+set_io MOSI2  R3 # out CAN bus module 
+
+set_io sCS E16
+set_io sSCL H16 # Must be this pin - H16 can get a clock to the GB.
+set_io sMOSI K14
+set_io spower[0] C16
+set_io spower[1] F16
+set_io spower[2] J15
+

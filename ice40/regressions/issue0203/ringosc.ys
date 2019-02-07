@@ -1,0 +1,2 @@
+read_verilog ringosc.v
+synth_ice40 -top top -json ringosc.json -blif ringosc.blif -abc2
