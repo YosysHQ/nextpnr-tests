@@ -1,4 +1,4 @@
-NPNR = ../../nextpnr-ice40
+NPNR = ../../../nextpnr-ice40
 override NPNR := $(abspath $(NPNR))
 JSON := $(wildcard */*.json)
 SH := $(wildcard */*.sh)
