@@ -9,6 +9,15 @@ SH_OUTPUT := $(patsubst %.sh,%.log,$(SH))
 
 all: $(JSON_OUTPUT) $(SH_OUTPUT)
 
+ifeq ($(NPNR),)
+	$(error "$$(NPNR) must point to a nextpnr-ice40 binary (currently: empty)")
+endif
+
+$(NPNR):
+ifeq ($(wildcard $(NPNR)),)
+	$(error "$$(NPNR) must point to a nextpnr-ice40 binary (currently: $@)")
+endif
+
 $(JSON_OUTPUT): %.log: %.json $(wildcard %.pcf) $(wildcard %.npnr) $(NPNR)
 	$(NPNR) --json $(word 1,$^) $(if $(wildcard $*.pcf),--pcf $*.pcf,) $(if $(wildcard $*.npnr),$(shell cat $*.npnr),) > $@ 2>&1
 
