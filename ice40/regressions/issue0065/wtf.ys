@@ -1,0 +1,3 @@
+read_verilog wtf.v ice40_pll_12_216.v
+synth_ice40 -top wtf
+write_json wtf.json
