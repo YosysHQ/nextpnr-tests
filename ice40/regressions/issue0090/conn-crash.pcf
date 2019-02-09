@@ -1,0 +1,9 @@
+set_io sevenseg_segment7 32
+set_io sevenseg_segment6 38
+set_io sevenseg_segment5 31
+set_io sevenseg_segment4 28
+set_io sevenseg_segment3 37
+set_io sevenseg_segment2 35
+set_io sevenseg_segment1 34
+set_io sevenseg_enable0 43
+set_io clk12 35
