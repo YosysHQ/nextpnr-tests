@@ -1,0 +1,18 @@
+set_io clk12m_in 35 -io_std SB_LVCMOS -pullup no
+
+set_io vga_r[0] 23 -io_std SB_LVCMOS -pullup no
+set_io vga_g[0] 25 -io_std SB_LVCMOS -pullup no
+set_io vga_r[1] 26 -io_std SB_LVCMOS -pullup no
+set_io vga_g[1] 27 -io_std SB_LVCMOS -pullup no
+set_io vga_b[1] 32 -io_std SB_LVCMOS -pullup no
+set_io vga_b[0] 31 -io_std SB_LVCMOS -pullup no
+set_io vga_hsync 34 -io_std SB_LVCMOS -pullup no
+set_io vga_vsync 43 -io_std SB_LVCMOS -pullup no
+
+set_io spi_miso 14 -io_std SB_LVCMOS -pullup no
+set_io spi_mosi 17 -io_std SB_LVCMOS -pullup no
+set_io spi_clk 15 -io_std SB_LVCMOS -pullup no
+set_io spi_cs 16 -io_std SB_LVCMOS -pullup no
+
+set_io out1 3 -io_std SB_LVCMOS -pullup no
+set_io out2 4 -io_std SB_LVCMOS -pullup no
