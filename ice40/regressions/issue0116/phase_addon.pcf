@@ -1,0 +1,19 @@
+set_io c_chg 2		# IOL_2A
+set_io c_dis 1		# IOL_2B
+#set_io c_val 5		# IOL_4A
+#set_io c_ref 6		# IOL_4B
+set_io c_val 6		# IOL_4A	# Define c_val as the _n for arachne-pnr
+set_io c_hyst 7		# IOL_5B
+
+set_io pdm_h_n 18	# IOR_34
+set_io pdm_l_n 19	# IOR_35
+set_io pdm_h_p 22	# IOR_38
+set_io pdm_l_p 23	# IOR_39
+
+set_io gpio[0] 26	# IOT_45
+set_io gpio[1] 27	# IOT_47
+set_io clk_48m 20	# IOR_36
+set_io clk_10m 29	# IOT_49
+set_io pps 30		# IOT_50
+set_io sda 32		# IOT_52
+set_io scl 31		# IOT_53
