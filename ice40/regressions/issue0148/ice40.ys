@@ -1,0 +1,10 @@
+verilog_defines -DHEX_PATHS -DYOSYS
+read_verilog -sv hdl/ice40.v
+read_verilog -sv hdl/spi_debug_ifc.v
+read_verilog -sv hdl/lattice/pll_12_25.v
+read_verilog -sv hdl/cpu16.sv
+read_verilog -sv hdl/vga/vga40x30x2.v
+read_verilog -sv hdl/vga/vga.v
+read_verilog -sv hdl/vga/videoram.v
+read_verilog -sv hdl/vga/chardata.v
+synth_ice40 -top top -json ice40.json
