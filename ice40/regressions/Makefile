@@ -1,9 +1,10 @@
 NPNR = ../../../nextpnr-ice40
 override NPNR := $(abspath $(NPNR))
-JSON := $(wildcard */*.json)
+JSON_GZ := $(wildcard */*.json.gz)
 SH := $(wildcard */*.sh)
 SH_BASENAME := $(patsubst %.sh,%,$(SH))
-JSON := $(filter-out $(addsuffix .json,$(SH_BASENAME)),$(JSON))
+JSON := $(patsubst %.gz,%,$(JSON_GZ))
+JSON := $(filter-out $(addsuffix .json,$(SH_BASENAME)), $(JSON))
 JSON_OUTPUT := $(patsubst %.json,%_postpnr.v,$(JSON))
 SH_OUTPUT := $(patsubst %.sh,%_postpnr.v,$(SH))
 
@@ -17,6 +18,9 @@ $(NPNR):
 ifeq ($(wildcard $(NPNR)),)
 	$(error "$$(NPNR) must point to a nextpnr-ice40 binary (currently: $@)")
 endif
+
+%: %.gz
+	gzip -dk $<
 
 $(JSON_OUTPUT): %_postpnr.v: %.json $(wildcard %.pcf) $(wildcard %.npnr) $(NPNR)
 	$(NPNR) --json $*.json --asc $*.asc $(if $(wildcard $*.pcf),--pcf $*.pcf,) $(if $(wildcard $*.npnr),$(shell cat $*.npnr),) > /dev/null 2>&1
