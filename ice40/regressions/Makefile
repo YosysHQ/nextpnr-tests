@@ -19,7 +19,7 @@ ifeq ($(wildcard $(NPNR)),)
 	$(error "$$(NPNR) must point to a nextpnr-ice40 binary (currently: $@)")
 endif
 
-%: %.gz
+%.json: %.json.gz
 	gzip -dk $<
 
 $(JSON_OUTPUT): %_postpnr.v: %.json $(wildcard %.pcf) $(wildcard %.npnr) $(NPNR)
@@ -27,6 +27,7 @@ $(JSON_OUTPUT): %_postpnr.v: %.json $(wildcard %.pcf) $(wildcard %.npnr) $(NPNR)
 	icebox_vlog $*.asc > $@
 
 $(SH_OUTPUT): %_postpnr.v: %.sh $(NPNR)
+	gzip -dk $*.json.gz
 	cd $(dir $@) && NPNR=$(NPNR) bash $(notdir $*.sh) > /dev/null 2>&1
 	if [ -f "$*.asc" ]; then \
 		icebox_vlog $*.asc > $@; \
@@ -35,4 +36,4 @@ $(SH_OUTPUT): %_postpnr.v: %.sh $(NPNR)
 	fi
 
 clean:
-	@rm -f */*.asc $(JSON_OUTPUT) $(SH_OUTPUT)
+	@rm -f */*.asc $(JSON) $(JSON_OUTPUT) $(SH_OUTPUT)
