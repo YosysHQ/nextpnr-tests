@@ -1,3 +1,4 @@
+*.json
 *.log
 *.asc
 *_postpnr.v
