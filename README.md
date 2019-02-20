@@ -6,6 +6,7 @@ Initial contents were populated from [YosysHQ/nextpnr@6cc1bf](https://github.com
 
 # Notes for regressions:
 - Add subdir to `:/<arch>/regressions/<issue####>`; e.g. `:/ice40/regressions/issue0000`
+  - Please gzip `*.json` files into `*.json.gz`
 - `:/<arch>/regressions/Makefile` will take all `:/<arch>/regressions/*/*.{json.gz,sh}` and
   - For `*.json.gz`: decompress into `*.json`, and then execute `nextpnr` using `*.pcf` if it exists, and using additional options specified by `*.npnr`
   - For `*.sh`: decompress `*.json.gz` into `*.json`, then run `*.sh` script
