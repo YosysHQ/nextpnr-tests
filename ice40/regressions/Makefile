@@ -23,8 +23,12 @@ endif
 	gzip -dk $<
 
 $(JSON_OUTPUT): %_postpnr.v: %.json $(wildcard %.pcf) $(wildcard %.npnr) $(NPNR)
-	$(NPNR) --json $*.json --asc $*.asc $(if $(wildcard $*.pcf),--pcf $*.pcf,) $(if $(wildcard $*.npnr),$(shell cat $*.npnr),) > /dev/null 2>&1
-	icebox_vlog $*.asc > $@
+	$(NPNR) --json $*.json --asc $*.asc $(if $(wildcard $*.pcf),--pcf $*.pcf,) $(if $(wildcard $*.npnr),$(shell cat $*.npnr),) > /dev/null 2>&1 || test -f $(dir $*)WAIVE
+	if [ ! -f $(dir $*)WAIVE  ]; then \
+	    icebox_vlog $*.asc > $@; \
+    else \
+        touch $@; \
+    fi
 
 $(SH_OUTPUT): %_postpnr.v: %.sh $(NPNR)
 	gzip -dk $*.json.gz
