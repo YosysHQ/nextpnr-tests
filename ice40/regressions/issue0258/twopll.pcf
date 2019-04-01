@@ -1,0 +1,5 @@
+set_io clk_i 52
+set_io led_o[0] 134
+set_io led_o[1] 135
+set_io clk_o[0] 136
+set_io clk_o[1] 137
