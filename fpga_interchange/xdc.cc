@@ -24,7 +24,9 @@
 
 USING_NEXTPNR_NAMESPACE
 
-class XdcTest : public ::testing::Test {};
+class XdcTest : public ::testing::Test
+{
+};
 
 TEST_F(XdcTest, do_nothing_interp)
 {
