@@ -19,8 +19,8 @@
 
 #include "gtest/gtest.h"
 
-#include "nextpnr.h"
 #include "bits.h"
+#include "nextpnr.h"
 
 namespace nextpnr {
 
@@ -32,26 +32,27 @@ TEST_F(BitsTest, popcount)
 {
     ASSERT_EQ(Bits::popcount(0), 0);
     ASSERT_EQ(Bits::generic_popcount(0), 0);
-    for(size_t i = 0; i < std::numeric_limits<unsigned int>::digits; ++i) {
+    for (size_t i = 0; i < std::numeric_limits<unsigned int>::digits; ++i) {
         ASSERT_EQ(Bits::popcount(1 << i), 1);
         ASSERT_EQ(Bits::generic_popcount(1 << i), 1);
     }
 
     ASSERT_EQ(Bits::popcount(std::numeric_limits<unsigned int>::max()), std::numeric_limits<unsigned int>::digits);
-    ASSERT_EQ(Bits::generic_popcount(std::numeric_limits<unsigned int>::max()), std::numeric_limits<unsigned int>::digits);
+    ASSERT_EQ(Bits::generic_popcount(std::numeric_limits<unsigned int>::max()),
+              std::numeric_limits<unsigned int>::digits);
 }
 
 TEST_F(BitsTest, ctz)
 {
-    for(size_t i = 0; i < std::numeric_limits<unsigned int>::digits; ++i) {
+    for (size_t i = 0; i < std::numeric_limits<unsigned int>::digits; ++i) {
         ASSERT_EQ(Bits::ctz(1 << i), i);
         ASSERT_EQ(Bits::generic_ctz(1 << i), i);
     }
 
-    for(size_t i = 0; i < std::numeric_limits<unsigned int>::digits-1; ++i) {
-        ASSERT_EQ(Bits::ctz((1 << i) | (1 << (i+1))), i);
-        ASSERT_EQ(Bits::generic_ctz((1 << i) | (1 << (i+1))), i);
+    for (size_t i = 0; i < std::numeric_limits<unsigned int>::digits - 1; ++i) {
+        ASSERT_EQ(Bits::ctz((1 << i) | (1 << (i + 1))), i);
+        ASSERT_EQ(Bits::generic_ctz((1 << i) | (1 << (i + 1))), i);
     }
 }
 
-};
+}; // namespace nextpnr
