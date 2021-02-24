@@ -20,6 +20,7 @@
 #include "gtest/gtest.h"
 
 #include "dynamic_bitarray.h"
+#include <climits>
 
 namespace nextpnr {
 
@@ -32,9 +33,12 @@ TEST_F(DynamicBitarrayTest, oneshot)
     for (size_t i = 0; i < 100; ++i) {
         std::vector<uint8_t> simple_storage;
         nextpnr::DynamicBitarray<> bitarray;
+        ASSERT_EQ(bitarray.bits_per_value(), CHAR_BIT);
 
         simple_storage.resize(i);
         bitarray.resize(i);
+        ASSERT_LE(i, bitarray.size());
+        ASSERT_LT(bitarray.size() - i, CHAR_BIT);
 
         for (size_t k = 0; k < 3; ++k) {
             for (size_t j = 0; j < i; ++j) {
