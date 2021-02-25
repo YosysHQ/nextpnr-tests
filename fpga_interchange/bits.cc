@@ -45,13 +45,13 @@ TEST_F(BitsTest, popcount)
 TEST_F(BitsTest, ctz)
 {
     for (size_t i = 0; i < std::numeric_limits<unsigned int>::digits; ++i) {
-        ASSERT_EQ(Bits::ctz(1 << i), i);
-        ASSERT_EQ(Bits::generic_ctz(1 << i), i);
+        ASSERT_EQ(Bits::ctz(1 << i), int(i));
+        ASSERT_EQ(Bits::generic_ctz(1 << i), int(i));
     }
 
     for (size_t i = 0; i < std::numeric_limits<unsigned int>::digits - 1; ++i) {
-        ASSERT_EQ(Bits::ctz((1 << i) | (1 << (i + 1))), i);
-        ASSERT_EQ(Bits::generic_ctz((1 << i) | (1 << (i + 1))), i);
+        ASSERT_EQ(Bits::ctz((1 << i) | (1 << (i + 1))), int(i));
+        ASSERT_EQ(Bits::generic_ctz((1 << i) | (1 << (i + 1))), int(i));
     }
 }
 
