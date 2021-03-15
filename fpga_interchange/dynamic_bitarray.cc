@@ -19,10 +19,11 @@
 
 #include "gtest/gtest.h"
 
-#include "dynamic_bitarray.h"
 #include <climits>
+#include "dynamic_bitarray.h"
+#include "nextpnr_namespaces.h"
 
-namespace nextpnr {
+NEXTPNR_NAMESPACE_BEGIN
 
 class DynamicBitarrayTest : public ::testing::Test
 {
@@ -32,7 +33,7 @@ TEST_F(DynamicBitarrayTest, oneshot)
 {
     for (size_t i = 0; i < 100; ++i) {
         std::vector<uint8_t> simple_storage;
-        nextpnr::DynamicBitarray<> bitarray;
+        DynamicBitarray<> bitarray;
         ASSERT_EQ(bitarray.bits_per_value(), size_t(CHAR_BIT));
 
         simple_storage.resize(i);
@@ -57,7 +58,7 @@ TEST_F(DynamicBitarrayTest, oneshot)
 TEST_F(DynamicBitarrayTest, resize)
 {
     std::vector<uint8_t> simple_storage;
-    nextpnr::DynamicBitarray<> bitarray;
+    DynamicBitarray<> bitarray;
 
     for (size_t i = 0; i < 100; ++i) {
 
@@ -80,7 +81,7 @@ TEST_F(DynamicBitarrayTest, resize)
 
 TEST_F(DynamicBitarrayTest, fill)
 {
-    nextpnr::DynamicBitarray<> bitarray;
+    DynamicBitarray<> bitarray;
 
     for (size_t i = 0; i < 100; ++i) {
         bitarray.resize(i);
@@ -97,4 +98,4 @@ TEST_F(DynamicBitarrayTest, fill)
     }
 }
 
-}; // namespace nextpnr
+NEXTPNR_NAMESPACE_END
