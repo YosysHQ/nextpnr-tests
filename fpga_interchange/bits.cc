@@ -20,9 +20,9 @@
 #include "gtest/gtest.h"
 
 #include "bits.h"
-#include "nextpnr.h"
+#include "nextpnr_namespaces.h"
 
-namespace nextpnr {
+NEXTPNR_NAMESPACE_BEGIN
 
 class BitsTest : public ::testing::Test
 {
@@ -55,4 +55,4 @@ TEST_F(BitsTest, ctz)
     }
 }
 
-}; // namespace nextpnr
+NEXTPNR_NAMESPACE_END
