@@ -22,6 +22,8 @@
 #include "nextpnr.h"
 #include "xdc.h"
 
+#include <tcl.h>
+
 USING_NEXTPNR_NAMESPACE
 
 class XdcTest : public ::testing::Test
