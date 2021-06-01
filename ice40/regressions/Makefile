@@ -20,7 +20,7 @@ ifeq ($(wildcard $(NPNR)),)
 endif
 
 %.json: %.json.gz
-	gzip -dk $<
+	gzip -fdk $<
 
 $(JSON_OUTPUT): %_postpnr.v: %.json $(wildcard %.pcf) $(wildcard %.npnr) $(NPNR)
 	$(NPNR) --json $*.json --asc $*.asc $(if $(wildcard $*.pcf),--pcf $*.pcf,) $(if $(wildcard $*.npnr),$(shell cat $*.npnr),) > /dev/null 2>&1 || test -f $(dir $*)WAIVE
@@ -31,7 +31,7 @@ $(JSON_OUTPUT): %_postpnr.v: %.json $(wildcard %.pcf) $(wildcard %.npnr) $(NPNR)
     fi
 
 $(SH_OUTPUT): %_postpnr.v: %.sh $(NPNR)
-	gzip -dk $*.json.gz
+	gzip -fdk $*.json.gz
 	cd $(dir $@) && NPNR=$(NPNR) bash $(notdir $*.sh) > /dev/null 2>&1
 	if [ -f "$*.asc" ]; then \
 		icebox_vlog $*.asc > $@; \
