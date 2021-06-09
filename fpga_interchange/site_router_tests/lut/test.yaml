@@ -1,0 +1,28 @@
+test_case:
+  - place:
+    # Place cell `lut_2` at BEL `SLICE_X1Y8.SLICEL/A6LUT`
+      lut_1: SLICE_X1Y8.SLICEL/A6LUT
+  - test:
+    # Make sure this placement is accept
+      SLICE_X1Y8.SLICEL/A6LUT: true
+  - unplace:
+      SLICE_X1Y8.SLICEL/A6LUT
+   # - place:
+   #    lut_1: SLICE_X1Y8.SLICEL/B6LUT
+   # - test:
+   #   # Make sure this placement is accept
+   #   SLICE_X1Y8.SLICEL/A6LUT: true
+   #   SLICE_X1Y8.SLICEL/B6LUT: true
+   # - place:
+   #    lut_1: SLICE_X1Y8.SLICEL/A6LUT
+   #    lut_2: SLICE_X1Y8.SLICEL/A5LUT
+   # - test:
+   #   # The site is now invalid because too many signals into the A6/A5LUT
+   #   SLICE_X1Y8.SLICEL/A6LUT: false
+   #   SLICE_X1Y8.SLICEL/A5LUT: false
+   # - unplace:
+   #    - lut_2
+   # - test:
+   #   # By removing lut_2, the site is valid again
+   #   SLICE_X1Y8.SLICEL/A6LUT: true
+   #   SLICE_X1Y8.SLICEL/A5LUT: true
