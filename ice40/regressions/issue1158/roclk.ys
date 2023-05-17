@@ -1,0 +1,4 @@
+read_verilog roclk.v
+hierarchy -top roclk
+synth_ice40
+write_json roclk.json
